@@ -22,7 +22,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "季一舟"
-  avatar           : "images/android-chrome-512x512.png"
+  avatar           : "http://s5ujw0my7.hn-bkt.clouddn.com/android-chrome-512x512.png?e=1702876313&token=JFBd8cTo_gS3Va_Enny95CBQ01Rpz4ltNViaiFD_:pa67tqX7z-u7Bws61Hffuk5lZb4="
   bio              : "计量经济学 金融数学"
   location         : "济南，中国"
   employer         :
