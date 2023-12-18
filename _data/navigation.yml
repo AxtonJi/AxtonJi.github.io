@@ -3,20 +3,8 @@ main:
   - title: "关于我"
     url: "/#about-me"
 
-  - title: "News"
-    url: "/#-news"
+  - title: "个人最新成果"
+    url: "/# 🔥 个人最新成果"
 
-  - title: "Publications"
-    url: "/#-publications"
-
-  - title: "Honors and Awards"
-    url: "/#-honors-and-awards"
-
-  - title: "Educations"
+  - title: "教育经历"
     url: "/#-educations"
-
-  - title: "Invited Talks"
-    url: "/#-invited-talks"
-
-  - title: "Internships"
-    url: "/#-internships"
