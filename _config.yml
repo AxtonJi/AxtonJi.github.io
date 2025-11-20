@@ -6,9 +6,9 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "季一舟"
-description              : "现为山东大学金融学专业大三本科生，排名1/70。 "
-repository               : "RayeRen/acad-homepage.github.io"
+title                    : "JI YIZHOU"
+description              : "M.A. in Economics at Peking University HSBC Business School"
+repository               : "AxtonJi/AxtonJi.github.io"
 google_scholar_stats_use_cdn : true
 
 # google analytics
@@ -21,14 +21,14 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "季一舟"
+  name             : "JI YIZHOU"
   avatar           : "images/android-chrome-512x512.png"
-  bio              : "计量经济学 金融数学<br />手机：18451333081"
-  location         : "济南，中国"
+  bio              : "Economics | Finance<br />PKU HSBC Business School"
+  location         : "Shenzhen, China"
   employer         :
-  pubmed           : 
-  googlescholar    : 
-  email            : "sinxtany@qq.com"
+  pubmed           :
+  googlescholar    :
+  email            : "yzji25@stu.pku.edu.cn"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -54,7 +54,7 @@ author:
   twitter          : 
   vine             :
   weibo            :
-  xing             : w
+  xing             :
   youtube          :
   wikipedia        :
 
