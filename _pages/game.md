@@ -1,126 +1,126 @@
 ---
 permalink: /game/
-title: "Mini Game"
-excerpt: "A fun mini game"
+title: "Snake Game"
+excerpt: "A fun snake game"
 author_profile: true
 ---
 
-<div class="game-container" markdown="1">
+<div markdown="1">
 
-# Click Challenge / 点击挑战
+# Snake Game / 贪吃蛇
 
-<p>Click the button as many times as you can in 10 seconds!</p>
-<p>10秒内尽可能多地点击按钮！</p>
-
-<div class="game-box">
-  <p class="game-score">Score: <span id="score">0</span></p>
-  <p class="game-timer">Time: <span id="timer">10</span>s</p>
-  <button id="clickBtn" class="click-btn" onclick="handleClick()">CLICK ME!</button>
-  <button id="startBtn" class="start-btn" onclick="startGame()">Start / 开始</button>
-</div>
+Use arrow keys or WASD to control. 使用方向键或WASD控制。
 
 </div>
 
-<style>
-.game-container {
-  text-align: center;
-}
-
-.game-box {
-  padding: 20px;
-  margin: 20px 0;
-}
-
-.game-score, .game-timer {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #1565c0;
-  margin: 10px 0;
-}
-
-.click-btn {
-  width: 150px;
-  height: 150px;
-  font-size: 1.2em;
-  font-weight: bold;
-  background: #1565c0;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 20px;
-  transition: transform 0.1s;
-}
-
-.click-btn:hover {
-  background: #0d47a1;
-}
-
-.click-btn:active {
-  transform: scale(0.95);
-}
-
-.click-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.start-btn {
-  padding: 10px 30px;
-  font-size: 1em;
-  background: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: block;
-  margin: 10px auto;
-}
-
-.start-btn:hover {
-  background: #388e3c;
-}
-</style>
+<div style="text-align: center; margin: 20px 0;">
+  <p style="font-size: 1.2em; color: #1565c0; font-weight: bold;">Score / 分数: <span id="score">0</span></p>
+  <canvas id="game" width="400" height="400" style="border: 2px solid #1565c0; background: #fafafa;"></canvas>
+  <br>
+  <button id="startBtn" style="margin-top: 15px; padding: 10px 25px; font-size: 1em; background: #1565c0; color: white; border: none; border-radius: 5px; cursor: pointer;">Start / 开始</button>
+</div>
 
 <script>
+var canvas = document.getElementById('game');
+var ctx = canvas.getContext('2d');
+var box = 20;
+var snake = [];
+var food = {};
+var dir = '';
 var score = 0;
-var timeLeft = 10;
-var gameActive = false;
-var timerInterval;
+var game = null;
 
-function startGame() {
+function init() {
+  snake = [{x: 10 * box, y: 10 * box}];
+  food = newFood();
+  dir = '';
   score = 0;
-  timeLeft = 10;
-  gameActive = true;
   document.getElementById('score').innerText = score;
-  document.getElementById('timer').innerText = timeLeft;
-  document.getElementById('clickBtn').disabled = false;
-  document.getElementById('startBtn').disabled = true;
-
-  timerInterval = setInterval(function() {
-    timeLeft--;
-    document.getElementById('timer').innerText = timeLeft;
-    if (timeLeft <= 0) {
-      endGame();
-    }
-  }, 1000);
 }
 
-function handleClick() {
-  if (gameActive) {
+function newFood() {
+  return {
+    x: Math.floor(Math.random() * 20) * box,
+    y: Math.floor(Math.random() * 20) * box
+  };
+}
+
+function draw() {
+  ctx.fillStyle = '#fafafa';
+  ctx.fillRect(0, 0, 400, 400);
+
+  // Draw food
+  ctx.fillStyle = '#e53935';
+  ctx.fillRect(food.x, food.y, box, box);
+
+  // Draw snake
+  for (var i = 0; i < snake.length; i++) {
+    ctx.fillStyle = i === 0 ? '#1565c0' : '#42a5f5';
+    ctx.fillRect(snake[i].x, snake[i].y, box, box);
+    ctx.strokeStyle = '#fff';
+    ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+  }
+
+  var headX = snake[0].x;
+  var headY = snake[0].y;
+
+  if (dir === 'LEFT') headX -= box;
+  if (dir === 'UP') headY -= box;
+  if (dir === 'RIGHT') headX += box;
+  if (dir === 'DOWN') headY += box;
+
+  // Check collision
+  if (headX < 0 || headX >= 400 || headY < 0 || headY >= 400 || collision(headX, headY)) {
+    clearInterval(game);
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(0, 0, 400, 400);
+    ctx.fillStyle = '#fff';
+    ctx.font = '24px Times New Roman';
+    ctx.textAlign = 'center';
+    ctx.fillText('Game Over!', 200, 180);
+    ctx.fillText('Score: ' + score, 200, 220);
+    return;
+  }
+
+  // Eat food
+  if (headX === food.x && headY === food.y) {
     score++;
     document.getElementById('score').innerText = score;
+    food = newFood();
+  } else {
+    snake.pop();
   }
+
+  snake.unshift({x: headX, y: headY});
 }
 
-function endGame() {
-  gameActive = false;
-  clearInterval(timerInterval);
-  document.getElementById('clickBtn').disabled = true;
-  document.getElementById('startBtn').disabled = false;
-  alert('Game Over! Your score: ' + score + '\n游戏结束！你的分数：' + score);
+function collision(x, y) {
+  for (var i = 0; i < snake.length; i++) {
+    if (x === snake[i].x && y === snake[i].y) return true;
+  }
+  return false;
 }
 
-// Initial state
-document.getElementById('clickBtn').disabled = true;
+document.addEventListener('keydown', function(e) {
+  var key = e.keyCode;
+  if ((key === 37 || key === 65) && dir !== 'RIGHT') dir = 'LEFT';
+  else if ((key === 38 || key === 87) && dir !== 'DOWN') dir = 'UP';
+  else if ((key === 39 || key === 68) && dir !== 'LEFT') dir = 'RIGHT';
+  else if ((key === 40 || key === 83) && dir !== 'UP') dir = 'DOWN';
+});
+
+document.getElementById('startBtn').addEventListener('click', function() {
+  if (game) clearInterval(game);
+  init();
+  game = setInterval(draw, 100);
+});
+
+// Initial screen
+init();
+ctx.fillStyle = '#fafafa';
+ctx.fillRect(0, 0, 400, 400);
+ctx.fillStyle = '#1565c0';
+ctx.font = '18px Times New Roman';
+ctx.textAlign = 'center';
+ctx.fillText('Click Start to Play', 200, 200);
 </script>

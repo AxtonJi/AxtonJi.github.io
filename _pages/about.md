@@ -118,6 +118,13 @@ redirect_from:
 
 <button class="print-cv-btn" onclick="window.print()">Print CV / 打印简历</button>
 
+<!-- Print header (only shows when printing) -->
+<div class="print-header">
+  <h1>JI YIZHOU / 季一舟</h1>
+  <p>Phone: (+86) 184-5133-3081 | Email: yzji25@stu.pku.edu.cn</p>
+  <p>M.A. in Economics, Peking University HSBC Business School</p>
+</div>
+
 <!-- English Version -->
 <div id="content-en" class="lang-content" markdown="1">
 
