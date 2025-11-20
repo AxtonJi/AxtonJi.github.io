@@ -13,7 +13,7 @@
 /* Embed SimKai font for all devices */
 @font-face {
     font-family: 'SimKai';
-    src: url('/simkai.ttf') format('truetype');
+    src: url('../../simkai.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -124,12 +124,20 @@ body {
 
 /* Chinese content specific font - use embedded SimKai */
 #content-zh {
-    font-family: "SimKai", "KaiTi", "楷体", "Times New Roman", serif;
+    font-family: "SimKai", "KaiTi", "楷体", serif !important;
+}
+
+#content-zh * {
+    font-family: "SimKai", "KaiTi", "楷体", serif !important;
 }
 
 /* English content specific font */
 #content-en {
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+#content-en * {
+    font-family: "Times New Roman", Times, serif !important;
 }
 
 /* Language toggle also uses the fonts */
