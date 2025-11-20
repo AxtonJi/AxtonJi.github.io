@@ -117,32 +117,88 @@ h1:before, .anchor:before {
     font-size: .8em;
 }
 
-/* Custom fonts: SimKai for Chinese, Times New Roman for English */
+/* Custom fonts: Times for English, SimKai for Chinese */
 body {
     font-family: "Times New Roman", "SimKai", "KaiTi", "楷体", serif;
 }
 
-/* Chinese content specific font - use embedded SimKai */
-#content-zh {
-    font-family: "SimKai", "KaiTi", "楷体", serif !important;
+/* Both Chinese and English content: Times first (for English), then SimKai (for Chinese) */
+#content-zh, #content-zh * {
+    font-family: "Times New Roman", "SimKai", "KaiTi", "楷体", serif !important;
 }
 
-#content-zh * {
-    font-family: "SimKai", "KaiTi", "楷体", serif !important;
-}
-
-/* English content specific font */
-#content-en {
+#content-en, #content-en * {
     font-family: "Times New Roman", Times, serif !important;
 }
 
-#content-en * {
-    font-family: "Times New Roman", Times, serif !important;
-}
-
-/* Language toggle also uses the fonts */
+/* Language toggle */
 .lang-btn {
     font-family: "Times New Roman", "SimKai", serif;
+}
+
+/* Print CV button */
+.print-cv-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #1565c0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Times New Roman", "SimKai", serif;
+    font-size: 0.9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.print-cv-btn:hover {
+    background: #0d47a1;
+}
+
+/* Print styles */
+@media print {
+    /* Hide sidebar and navigation */
+    .sidebar, .masthead, .print-cv-btn, .lang-switch {
+        display: none !important;
+    }
+
+    /* Full width content */
+    .page {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px !important;
+    }
+
+    #main {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Portrait orientation */
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+
+    /* Font sizes for print */
+    body {
+        font-size: 11pt !important;
+    }
+
+    h1 {
+        font-size: 14pt !important;
+        margin-top: 10pt !important;
+    }
+
+    .lang-content {
+        font-size: 10pt !important;
+    }
+
+    li {
+        margin-bottom: 2pt !important;
+    }
 }
 
 /* Language switch styling */

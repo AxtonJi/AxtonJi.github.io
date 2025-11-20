@@ -8,10 +8,115 @@ redirect_from:
   - /about.html
 ---
 
+<!-- Loading overlay -->
+<div id="loading-overlay">
+  <div class="loading-content">
+    <p class="loading-text">简历加载中...</p>
+    <div class="loading-bar">
+      <div class="loading-progress" id="loading-progress"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  text-align: center;
+}
+
+.loading-text {
+  font-size: 1.2em;
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-family: "SimKai", "KaiTi", serif;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.loading-progress {
+  width: 0%;
+  height: 100%;
+  background: #1565c0;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+</style>
+
+<script>
+(function() {
+  var progress = document.getElementById('loading-progress');
+  var overlay = document.getElementById('loading-overlay');
+  var loaded = false;
+
+  // Simulate progress
+  var currentProgress = 0;
+  var progressInterval = setInterval(function() {
+    if (currentProgress < 90 && !loaded) {
+      currentProgress += Math.random() * 10;
+      progress.style.width = Math.min(currentProgress, 90) + '%';
+    }
+  }, 200);
+
+  // Load font
+  var font = new FontFace('SimKai', 'url(../../simkai.ttf)');
+
+  font.load().then(function(loadedFont) {
+    document.fonts.add(loadedFont);
+    loaded = true;
+    clearInterval(progressInterval);
+    progress.style.width = '100%';
+
+    setTimeout(function() {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.3s ease';
+      setTimeout(function() {
+        overlay.style.display = 'none';
+      }, 300);
+    }, 300);
+  }).catch(function(error) {
+    // Font failed to load, hide overlay anyway
+    console.error('Font load error:', error);
+    loaded = true;
+    clearInterval(progressInterval);
+    progress.style.width = '100%';
+    setTimeout(function() {
+      overlay.style.display = 'none';
+    }, 500);
+  });
+
+  // Fallback timeout - hide after 5 seconds regardless
+  setTimeout(function() {
+    if (overlay.style.display !== 'none') {
+      overlay.style.display = 'none';
+    }
+  }, 5000);
+})();
+</script>
+
 <div class="lang-switch">
   <button id="btn-en" class="lang-btn active" onclick="switchLang('en')">EN</button>
   <button id="btn-zh" class="lang-btn" onclick="switchLang('zh')">中文</button>
 </div>
+
+<button class="print-cv-btn" onclick="window.print()">Print CV / 打印简历</button>
 
 <!-- English Version -->
 <div id="content-en" class="lang-content" markdown="1">
