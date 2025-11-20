@@ -32,9 +32,12 @@
         <li class="loc-zh" style="display:none;"><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> 深圳，中国</li>
       {% endif %}
 
+      <li class="phone-en"><i class="fas fa-fw fa-phone" aria-hidden="true"></i> (+86) 184-5133-3081</li>
+      <li class="phone-zh" style="display:none;"><i class="fas fa-fw fa-phone" aria-hidden="true"></i> (+86) 184-5133-3081</li>
+
       {% if author.email %}
-        <li class="email-en"><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email: {{ author.email }}</a></li>
-        <li class="email-zh" style="display:none;"><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> 邮箱: {{ author.email }}</a></li>
+        <li class="email-en"><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> {{ author.email }}</a></li>
+        <li class="email-zh" style="display:none;"><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> {{ author.email }}</a></li>
       {% endif %}
 
       {% if author.googlescholar %}
