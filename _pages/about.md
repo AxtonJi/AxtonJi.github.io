@@ -49,19 +49,6 @@ redirect_from:
 - Built economic analysis panels for key indicators; assisted in drafting macroeconomic forecast reports
 - Evaluated corporate bonds using Wind; wrote analytical reports to support portfolio building
 
-# Activities & Leadership
-
-**The 9th China "Internet+" Competition** &nbsp; Co-founder & Business Lead
-<span class="date-right">2022.01 - Present</span>
-
-- Led 15-member team to commercialize medical research; completed financial modeling and market analysis
-- Created financing proposals and business plans; secured National Silver Medal; registered company for clinical trials
-
-**Shandong University School of Economics** &nbsp; Chair, Academic Development Center
-<span class="date-right">2022.09 - 2023.09</span>
-
-- Organized 30+ academic events for 600+ students; doubled national-level competition awards year-over-year
-
 # Skills & Other
 
 - **Programming:** Python (Advanced), STATA (Advanced), MATLAB, Gephi
@@ -106,19 +93,6 @@ redirect_from:
 - 搭建经济指标分析面板；协助撰写宏观经济推演深度报告
 - 利用Wind评估公司债；撰写分析报告协助构建自营组合
 
-# 社会实践
-
-**第九届中国"互联网+"创新创业大赛** &nbsp; 联合创始人、商业负责人
-<span class="date-right">2022.01 - 至今</span>
-
-- 带领15人团队将医学科研成果商业化；完成财务建模与市场分析
-- 撰写融资方案与商业计划书；获国家级银奖；注册公司并进入临床试验
-
-**山东大学经济学院** &nbsp; 学业发展中心主席
-<span class="date-right">2022.09 - 2023.09</span>
-
-- 组织30+场学业活动，服务600+学生；国家级竞赛获奖数同比翻倍
-
 # 专业技能
 
 - **编程:** Python（精通）、STATA（精通）、MATLAB、Gephi
@@ -134,6 +108,7 @@ function switchLang(lang) {
   const btnEn = document.getElementById('btn-en');
   const btnZh = document.getElementById('btn-zh');
 
+  // Switch main content
   if (lang === 'en') {
     enContent.style.display = 'block';
     zhContent.style.display = 'none';
@@ -144,6 +119,18 @@ function switchLang(lang) {
     zhContent.style.display = 'block';
     btnEn.classList.remove('active');
     btnZh.classList.add('active');
+  }
+
+  // Switch sidebar content
+  const enElements = document.querySelectorAll('.bio-en, .desc-en, .loc-en, .email-en');
+  const zhElements = document.querySelectorAll('.bio-zh, .desc-zh, .loc-zh, .email-zh');
+
+  if (lang === 'en') {
+    enElements.forEach(el => el.style.display = '');
+    zhElements.forEach(el => el.style.display = 'none');
+  } else {
+    enElements.forEach(el => el.style.display = 'none');
+    zhElements.forEach(el => el.style.display = '');
   }
 }
 </script>

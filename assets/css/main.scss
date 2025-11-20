@@ -211,3 +211,21 @@ body {
 .lang-content > p {
     margin-bottom: 0.3em;
 }
+
+/* Sidebar fonts */
+.bio-en, .desc-en, .loc-en, .email-en {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.bio-zh, .desc-zh, .loc-zh, .email-zh {
+    font-family: "SimKai", "KaiTi", "楷体", serif;
+}
+
+/* Author profile uses both fonts */
+.author__name {
+    font-family: "Times New Roman", serif;
+}
+
+.author__bio {
+    font-size: 0.9em;
+}

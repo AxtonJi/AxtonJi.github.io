@@ -1,2 +1,4 @@
-# main links links
+# main links
 main:
+  - title: "Game"
+    url: /game/
