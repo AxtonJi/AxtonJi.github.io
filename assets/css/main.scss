@@ -123,61 +123,93 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
+/* Language content transitions */
+.lang-content {
+    transition: opacity 0.3s ease;
+}
+
 /* Language switch styling */
 .lang-switch {
     text-align: right;
-    margin-bottom: 1.5em;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 1em;
 }
 
 .lang-btn {
-    padding: 0.5em 1em;
-    margin-left: 0.5em;
-    border: 1px solid #333;
+    padding: 0.4em 0.8em;
+    margin-left: 0.3em;
+    border: 1px solid #494e52;
+    border-radius: 3px;
     background-color: #fff;
-    color: #333;
+    color: #494e52;
     cursor: pointer;
     font-family: "Times New Roman", "KaiTi", serif;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
+    font-size: 0.85em;
+    transition: all 0.2s ease;
 }
 
 .lang-btn:hover {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
 }
 
 .lang-btn.active {
-    background-color: #333;
+    background-color: #494e52;
     color: #fff;
 }
 
-/* Resume section headers */
-.lang-content h1 {
-    font-family: "Times New Roman", "KaiTi", "楷体", serif;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.3em;
-    margin-top: 1.5em;
+/* Typing text effect */
+.typing-text {
+    font-size: 1.1em;
+    color: #494e52;
+    min-height: 1.5em;
+    margin-bottom: 1em;
+    border-right: 2px solid #494e52;
+    animation: blink 0.7s infinite;
+    display: inline-block;
+    padding-right: 3px;
 }
 
-/* Bold text styling */
-.lang-content strong {
-    font-weight: 600;
+@keyframes blink {
+    0%, 50% { border-color: #494e52; }
+    51%, 100% { border-color: transparent; }
+}
+
+/* Experience item styling */
+.experience-item {
+    margin-bottom: 1.5em;
+    padding-left: 0;
+}
+
+.experience-item strong {
+    font-size: 1em;
+}
+
+.experience-item .date {
+    display: block;
+    color: #888;
+    font-style: italic;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+.experience-item ul, .experience-item p {
+    margin-top: 0.5em;
 }
 
 /* List styling for resume */
 .lang-content ul {
     margin-left: 0;
-    padding-left: 1.2em;
+    padding-left: 1.5em;
 }
 
 .lang-content li {
-    margin-bottom: 0.5em;
-    line-height: 1.6;
+    margin-bottom: 0.4em;
+    line-height: 1.5;
 }
 
-/* Date alignment */
-.lang-content span[style*="float:right"] {
-    font-style: italic;
-    color: #666;
+/* Section headers with emoji */
+.lang-content h1 {
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    color: #333;
 }
