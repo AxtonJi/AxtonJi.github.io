@@ -314,13 +314,13 @@ body {
     margin-bottom: 0.3em;
 }
 
-/* Sidebar fonts */
+/* Sidebar fonts - Times for English, SimKai for Chinese */
 .bio-en, .desc-en, .loc-en, .email-en {
     font-family: "Times New Roman", Times, serif;
 }
 
 .bio-zh, .desc-zh, .loc-zh, .email-zh {
-    font-family: "SimKai", "KaiTi", "楷体", serif;
+    font-family: "Times New Roman", "SimKai", "KaiTi", "楷体", serif;
 }
 
 /* Author profile uses both fonts */
@@ -330,4 +330,9 @@ body {
 
 .author__bio {
     font-size: 0.9em;
+    font-family: "Times New Roman", "SimKai", "KaiTi", "楷体", serif;
+}
+
+.author__urls {
+    font-family: "Times New Roman", "SimKai", "KaiTi", "楷体", serif;
 }
